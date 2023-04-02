@@ -13,6 +13,8 @@ Multi Game is the 3rd assignment about an Android Application for CN322 Mobile A
 2. Use Number Guessing Game from [the 1st assignment](https://github.com/asnnat/cn333as1)
 3. Use Quiz Game from [the 2nd assignment](https://github.com/asnnat/cn333as2)
 4. Implement another Game with TicTacToe Game
+5. When a game is chosen, the application switches to that game's page.
+6. There is a button to return to the initial page.
 
 ## Getting Started
 
