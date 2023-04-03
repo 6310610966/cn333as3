@@ -18,7 +18,7 @@ class GameViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(GameUiState())
     val uiState: StateFlow<GameUiState> = _uiState.asStateFlow()
 
-    //QuizeGame
+    //QuizGame
     var userGuess by mutableStateOf("")
         private set
 
@@ -156,7 +156,7 @@ class GameViewModel : ViewModel() {
             }
             else {
                 state = state.copy(
-                    hintText = "Play 'X' turn",
+                    hintText = "Player 'X' turn",
                     currentTurn = BoardCellValue.CROSS
                 )
             }
@@ -176,7 +176,7 @@ class GameViewModel : ViewModel() {
                 )
             } else {
                 state = state.copy(
-                    hintText = "Play 'O' turn",
+                    hintText = "Player 'O' turn",
                     currentTurn = BoardCellValue.CIRCLE
                 )
             }

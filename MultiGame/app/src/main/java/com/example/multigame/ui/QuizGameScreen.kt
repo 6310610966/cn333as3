@@ -29,7 +29,7 @@ import com.example.multigame.ui.theme.Purple700
 import com.example.multigame.ui.theme.Teal400
 
 @Composable
-fun QuizeGameScreen(
+fun QuizGameScreen(
     modifier: Modifier = Modifier,
     gameViewModel: GameViewModel = viewModel(),
     onCancelButtonClicked: () -> Unit,
@@ -245,9 +245,9 @@ private fun FinalScoreDialog(
 
 @Preview(showBackground = true, backgroundColor = 0xFFA9E2E1)
 @Composable
-fun QuizeGamePreview() {
+fun QuizGamePreview() {
     MultiGameTheme {
-        QuizeGameScreen(
+        QuizGameScreen(
             gameViewModel = GameViewModel(),
             onCancelButtonClicked = {}
         )

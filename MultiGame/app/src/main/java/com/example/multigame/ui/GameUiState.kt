@@ -13,7 +13,7 @@ data class GameUiState(
     val playCircleCount: Int = 0,
     val playCrossCount: Int = 0,
     val drawCount: Int = 0,
-    val hintText: String = "Play 'O' turn",
+    val hintText: String = "Player 'O' turn",
     val currentTurn: BoardCellValue = BoardCellValue.CIRCLE,
     val victoryType: VictoryType = VictoryType.NONE,
     val hasWon: Boolean = false

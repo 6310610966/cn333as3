@@ -134,6 +134,6 @@ val allAnswers: Set<String> =
 val gameOptions: List<String> =
     listOf(
         "Number Guessing Game",
-        "Quize Game",
+        "Quiz Game",
         "Tic Tac Toe"
     )

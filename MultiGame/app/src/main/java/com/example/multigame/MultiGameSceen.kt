@@ -19,7 +19,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.multigame.data.gameOptions
 import com.example.multigame.ui.GameViewModel
 import com.example.multigame.ui.NumberGuessingGameScreen
-import com.example.multigame.ui.QuizeGameScreen
+import com.example.multigame.ui.QuizGameScreen
 import com.example.multigame.ui.StartGameScreen
 import com.example.multigame.ui.TicTacToe.TicTacToeScreen
 import kotlin.random.Random
@@ -27,7 +27,7 @@ import kotlin.random.Random
 enum class MultiGameScreen(@StringRes val title: Int) {
     Start(title = R.string.app_name),
     NumberGuessingGame(title = R.string.app_name_number),
-    QuizeGame(title = R.string.app_name_quize),
+    QuizGame(title = R.string.app_name_quize),
     TicTacToe(title = R.string.app_name_tictactoe)
 }
 
@@ -88,7 +88,7 @@ fun MultiGameApp(
                     onAppSelected = { selectedGame ->
                         when (selectedGame) {
                             "Number Guessing Game" -> navController.navigate(MultiGameScreen.NumberGuessingGame.name)
-                            "Quize Game" -> navController.navigate(MultiGameScreen.QuizeGame.name)
+                            "Quiz Game" -> navController.navigate(MultiGameScreen.QuizGame.name)
                             "Tic Tac Toe" -> navController.navigate(MultiGameScreen.TicTacToe.name)
                         }
                     }
@@ -102,8 +102,8 @@ fun MultiGameApp(
                     }
                 )
             }
-            composable(route = MultiGameScreen.QuizeGame.name){
-                QuizeGameScreen(
+            composable(route = MultiGameScreen.QuizGame.name){
+                QuizGameScreen(
                     onCancelButtonClicked = {
                         cancelGameAndNavigateToStart(gameViewModel, navController)
                     },
