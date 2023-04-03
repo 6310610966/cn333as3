@@ -13,6 +13,7 @@ val DeepPink = Color(0xFFE96479)
 val Aqua = Color(0xFF74DBD8)
 val PurpleA100 = Color(0xFFEA80FC)
 val Brown = Color(0xFFA9907E)
+val DeepBrown = Color(0xFF866C59)
 
 //NumberGuessingGame
 val Black = Color(0xFF000000)
@@ -23,10 +24,4 @@ val White = Color(0xFFFFFFFF)
 
 //QuizeGame
 val Teal400 = Color(0xFF26A69A)
-val Teal100 = Color(0xFFA9E2E1)
-val Purple800 = Color(0xFF800CA7)
-val Purple300 = Color(0xFFBA68C8)
-val Black02 = Color(0xFF000000)
-val White02 = Color(0xFFFFFFFF)
-val DeepPurple = Color(0xFF865DFF)
-val PurpleA50 = Color(0xFFFFA3FD)
+

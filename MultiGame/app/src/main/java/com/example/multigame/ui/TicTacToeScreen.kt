@@ -142,13 +142,34 @@ fun TicTacToeScreen(
         Row(
             modifier = Modifier.fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.Center
         ) {
             Text(
                 text = state.hintText,
                 fontSize = 20.sp,
             )
+        }
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ){
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCancelButtonClicked,
+                shape = RoundedCornerShape(5.dp),
+                elevation = ButtonDefaults.elevation(5.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = DeepPink
+                )
+            ) {
+                Text(
+                    text = "Cancel",
+                    fontSize = 16.sp
+                )
+            }
             Button(
+                modifier = Modifier.weight(1f),
                 onClick = {
                     gameViewModel.onAction(
                         UserActions.PlayAgainButtonClicked
@@ -165,18 +186,6 @@ fun TicTacToeScreen(
                     text = "Play Again",
                     fontSize = 16.sp,
                 )
-            }
-        }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ){
-            OutlinedButton(
-                onClick = onCancelButtonClicked,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Cancel")
             }
         }
     }

@@ -1,10 +1,8 @@
 package com.example.multigame.ui
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -29,7 +27,7 @@ import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import com.example.multigame.R
-import com.example.multigame.ui.theme.MultiGameTheme
+import com.example.multigame.ui.theme.*
 
 @Composable
 fun NumberGuessingGameScreen(
@@ -61,7 +59,7 @@ fun NumberGuessingGameScreen(
         )
         Text(
             text = stringResource(R.string.app_name_number),
-            color = MaterialTheme.colors.surface,
+            color = Color.Black,
             fontFamily = FontFamily.Monospace,
             fontSize = 24.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally),
@@ -71,7 +69,7 @@ fun NumberGuessingGameScreen(
 
         Text(
             text = stringResource(R.string.header_of_page),
-            color = MaterialTheme.colors.surface,
+            color = DeepBrown,
             textAlign = TextAlign.Center,
             fontSize = 20.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -87,7 +85,7 @@ fun NumberGuessingGameScreen(
             Text(
                 text = stringResource(R.string.hint, hint),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                color = MaterialTheme.colors.surface,
+                color = DeepBrown,
                 fontSize = 20.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
@@ -106,53 +104,73 @@ fun NumberGuessingGameScreen(
                 } else {
                     canGuess = false
                 } },
+                shape = RoundedCornerShape(5.dp),
+                elevation = ButtonDefaults.elevation(5.dp),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
-                    contentColor = MaterialTheme.colors.onPrimary)) {
+                    backgroundColor = Brown,
+                    contentColor = Color.White)
+                ) {
                 Text(stringResource(R.string.guess))
-            }
+                }
         } else {
             Text(
                 text = stringResource(R.string.success),
-                color = MaterialTheme.colors.surface,
+                color = Teal400,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = stringResource(R.string.count, count),
-                color = MaterialTheme.colors.surface,
+                color = Teal400,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Spacer(Modifier.height(16.dp))
         }
-
-        Button(onClick = {
-            count = 0
-            canGuess = true
-            inputNumber = ""
-            hint = "Let's Guess"
-            randomNumber = nextInt(1, 1000) },
-            colors = ButtonDefaults.buttonColors(
-                backgroundColor = MaterialTheme.colors.onBackground,
-                contentColor = Color.White)
-        ){
-            Icon(
-                imageVector = Icons.Filled.Refresh,
-                contentDescription = "Refresh Icon",
-                modifier = Modifier.size(ButtonDefaults.IconSize)
-            )
-            Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
-            Text(stringResource(R.string.restart))
-        }
-        OutlinedButton(
-            onClick = onCancelButtonClicked,
+        Row(
             modifier = Modifier.fillMaxWidth(),
-        ) {
-            Text(text = "Cancel")
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ){
+            OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCancelButtonClicked,
+                shape = RoundedCornerShape(5.dp),
+                elevation = ButtonDefaults.elevation(5.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = DeepPink
+                )
+            ) {
+                Text(
+                    text = "Cancel",
+                    fontSize = 16.sp
+                )
+            }
+            Button(onClick = {
+                count = 0
+                canGuess = true
+                inputNumber = ""
+                hint = "Let's Guess"
+                randomNumber = nextInt(1, 1000) },
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Red,
+                    contentColor = Color.White)
+            ){
+                Icon(
+                    imageVector = Icons.Filled.Refresh,
+                    contentDescription = "Refresh Icon",
+                    modifier = Modifier.size(ButtonDefaults.IconSize)
+                )
+                Spacer(modifier = Modifier.size(ButtonDefaults.IconSpacing))
+                Text(
+                    stringResource(R.string.restart),
+                    fontSize = 16.sp
+                )
+            }
         }
+
     }
 }
 
@@ -191,15 +209,3 @@ fun NumberGuessingGamePreview() {
     }
 }
 
-///**
-// * Composable that displays what the UI of the app looks like in dark theme in the design tab.
-// */
-//@Preview(showBackground = true, backgroundColor = 0x757575)
-//@Composable
-//fun DarkThemePreview() {
-//    var randomNumber = nextInt(1, 1000)
-//
-//    MultiGameTheme(darkTheme = true) {
-//        NumberGuessingGameScreen(randomNumber)
-//    }
-//}

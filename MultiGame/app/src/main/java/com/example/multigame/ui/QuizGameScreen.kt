@@ -6,11 +6,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.font.FontFamily
@@ -21,7 +23,8 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.multigame.data.allAnswers
 import com.example.multigame.ui.theme.MultiGameTheme
-import com.example.multigame.ui.theme.Shapes
+import com.example.multigame.ui.theme.Purple700
+import com.example.multigame.ui.theme.Teal400
 
 @Composable
 fun QuizeGameScreen(
@@ -52,36 +55,39 @@ fun QuizeGameScreen(
             modifier = modifier
                 .fillMaxWidth()
                 .padding(top = 16.dp),
-            horizontalArrangement = Arrangement.SpaceAround
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             OutlinedButton(
+                modifier = Modifier.weight(1f),
+                onClick = onCancelButtonClicked,
+                shape = RoundedCornerShape(5.dp),
+                elevation = ButtonDefaults.elevation(5.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Teal400
+                )
+            ) {
+                Text(
+                    text = "Cancel",
+                    fontSize = 16.sp
+                )
+            }
+            OutlinedButton(
                 onClick = { gameViewModel.skipQuestion() },
-                shape = Shapes.medium,
-                modifier = Modifier
-                    .weight(1f)
-                    .padding(end = 80.dp)
-                    .padding(start = 80.dp)
+                modifier = Modifier.weight(1f),
+                shape = RoundedCornerShape(5.dp),
+                elevation = ButtonDefaults.elevation(5.dp),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Teal400,
+                    contentColor = Color.White
+                )
             ) {
                 Text(
                     text = "Skip",
-                    fontFamily = FontFamily.Monospace,
-                    color = MaterialTheme.colors.secondary,
+                    fontSize = 16.sp
                 )
             }
         }
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center
-        ){
-            OutlinedButton(
-                onClick = onCancelButtonClicked,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Text(text = "Cancel")
-            }
-        }
-
         if (gameUiState.isGameOver) {
             FinalScoreDialog(
                 score = gameUiState.score,
@@ -101,7 +107,7 @@ fun GameStatus(questionCount: Int, score: Int, modifier: Modifier = Modifier) {
     ) {
         Text(
             text = "$questionCount / 10",
-            color = MaterialTheme.colors.primaryVariant,
+            color = Purple700,
             fontFamily = FontFamily.Monospace,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
@@ -112,7 +118,7 @@ fun GameStatus(questionCount: Int, score: Int, modifier: Modifier = Modifier) {
                 .wrapContentWidth(Alignment.End),
             text = "Score: $score",
             fontFamily = FontFamily.Monospace,
-            color = MaterialTheme.colors.primaryVariant,
+            color = Purple700,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
         )
@@ -134,7 +140,7 @@ fun GameLayout(
         Text(
             text = currentQuestion,
             fontFamily = FontFamily.Monospace,
-            color = MaterialTheme.colors.surface,
+            color = Color.Black,
             fontSize = 45.sp,
             fontWeight = FontWeight.Bold,
             modifier = modifier.align(Alignment.CenterHorizontally)
@@ -144,9 +150,8 @@ fun GameLayout(
             text = "Which one is the best choice?",
             fontFamily = FontFamily.Monospace,
             fontSize = 17.sp,
-            color = MaterialTheme.colors.primaryVariant,
+            color = Purple700,
             modifier = Modifier.align(Alignment.CenterHorizontally)
-
         )
 
         val radioOptions = ArrayList<String>()
@@ -182,15 +187,11 @@ fun GameLayout(
                         selected = (selectedItem == label),
                         onClick = {
                             gameViewModel.checkUserGuess(label) },
-                        colors = RadioButtonDefaults.colors(
-                            selectedColor = MaterialTheme.colors.primary,
-                            unselectedColor = MaterialTheme.colors.onSurface
-                        )
                     )
                     Text(
                         text = label,
                         fontFamily = FontFamily.Monospace,
-                        color = MaterialTheme.colors.primaryVariant,
+                        color = Purple700,
                         fontWeight = FontWeight.Bold,
                     )
                 }
@@ -210,9 +211,9 @@ private fun FinalScoreDialog(
     AlertDialog(
         onDismissRequest = {},
         title = { Text(text = "Congratulations!",
-            color = MaterialTheme.colors.onBackground) },
+            color = Color.White) },
         text = { Text(text = "You got $score out of 10",
-            color = MaterialTheme.colors.onBackground) },
+            color = Color.White) },
         modifier = modifier,
         dismissButton = {
             TextButton(
@@ -221,14 +222,14 @@ private fun FinalScoreDialog(
                 }
             ) {
                 Text(text = "Exit",
-                    color = MaterialTheme.colors.onBackground
+                    color = Color.White
                 )
             }
         },
         confirmButton = {
             TextButton(onClick = onPlayAgain) {
                 Text(text = "Restart",
-                    color = MaterialTheme.colors.onBackground
+                    color = Color.White
                 )
             }
         }
@@ -238,18 +239,10 @@ private fun FinalScoreDialog(
 @Preview(showBackground = true, backgroundColor = 0xFFA9E2E1)
 @Composable
 fun QuizeGamePreview() {
-    MultiGameTheme(darkTheme = false) {
+    MultiGameTheme {
         QuizeGameScreen(
             gameViewModel = GameViewModel(),
             onCancelButtonClicked = {}
         )
     }
 }
-
-//@Preview(showBackground = true, backgroundColor = 0xFF000000)
-//@Composable
-//fun DarkThemePreview() {
-//    MultiGameTheme(darkTheme = true) {
-//        QuizeGameScreen()
-//    }
-//}
