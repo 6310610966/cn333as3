@@ -144,7 +144,7 @@ fun NumberGuessingGameScreen(
                 )
             ) {
                 Text(
-                    text = "Cancel",
+                    text = "Go Back",
                     fontSize = 16.sp
                 )
             }

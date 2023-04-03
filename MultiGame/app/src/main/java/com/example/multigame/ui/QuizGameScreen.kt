@@ -68,7 +68,7 @@ fun QuizeGameScreen(
                 )
             ) {
                 Text(
-                    text = "Cancel",
+                    text = "Go Back",
                     fontSize = 16.sp
                 )
             }
