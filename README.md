@@ -27,7 +27,7 @@ You have to install software before using the project.
 
 1. Clone the repo
     ```sh
-    git clone https://github.com/asnnat/cn333as3.git
+    git clone https://github.com/6310610966/cn333as3.git
     ```
 2. Or click the **Download ZIP button** to save the project to your computer, then unpack it
 
