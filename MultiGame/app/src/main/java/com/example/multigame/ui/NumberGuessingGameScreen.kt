@@ -1,6 +1,7 @@
 package com.example.multigame.ui
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
@@ -46,7 +47,10 @@ fun NumberGuessingGameScreen(
     var canGuess by remember { mutableStateOf(true) }
 
     Column(
-        modifier = Modifier.padding(32.dp),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Gray)
+            .padding(32.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -69,7 +73,7 @@ fun NumberGuessingGameScreen(
 
         Text(
             text = stringResource(R.string.header_of_page),
-            color = DeepBrown,
+            color = Color.White,
             textAlign = TextAlign.Center,
             fontSize = 20.sp,
             modifier = Modifier.align(Alignment.CenterHorizontally)
@@ -85,7 +89,7 @@ fun NumberGuessingGameScreen(
             Text(
                 text = stringResource(R.string.hint, hint),
                 modifier = Modifier.align(Alignment.CenterHorizontally),
-                color = DeepBrown,
+                color = Color.White,
                 fontSize = 20.sp,
                 fontFamily = FontFamily.Monospace,
                 fontWeight = FontWeight.Bold
@@ -115,14 +119,14 @@ fun NumberGuessingGameScreen(
         } else {
             Text(
                 text = stringResource(R.string.success),
-                color = Teal400,
+                color = Color.White,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
             )
             Text(
                 text = stringResource(R.string.count, count),
-                color = Teal400,
+                color = Color.White,
                 modifier = Modifier.align(Alignment.CenterHorizontally),
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold

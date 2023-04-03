@@ -55,14 +55,17 @@ fun TicTacToeScreen(
             Text(
                 text = "Player 'O': ${state.playCircleCount}",
                 fontSize = 16.sp,
+                color = Black
             )
             Text(
                 text = "Draw: ${state.drawCount}",
                 fontSize = 16.sp,
+                color = Black
             )
             Text(
                 text = "Player 'X': ${state.playCrossCount}",
                 fontSize = 16.sp,
+                color = Black
             )
         }
         Text(
@@ -147,6 +150,7 @@ fun TicTacToeScreen(
             Text(
                 text = state.hintText,
                 fontSize = 20.sp,
+                color = Black
             )
         }
         Row(

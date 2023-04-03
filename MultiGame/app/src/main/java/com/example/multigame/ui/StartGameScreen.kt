@@ -1,5 +1,6 @@
 package com.example.multigame.ui
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -16,6 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.multigame.data.gameOptions
 import com.example.multigame.ui.theme.DeepPink
+import com.example.multigame.ui.theme.GrayBackground
 
 
 @Composable
@@ -26,8 +28,9 @@ fun StartGameScreen(
 ) {
     Column(
         modifier = modifier
-            .padding(16.dp)
-            .fillMaxWidth(),
+            .fillMaxSize()
+            .background(GrayBackground)
+            .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
@@ -36,7 +39,8 @@ fun StartGameScreen(
             text = "Choose your game",
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
-            fontSize = 30.sp
+            fontSize = 30.sp,
+            color = Color.Black
         )
         Spacer(modifier = Modifier.height(16.dp))
 

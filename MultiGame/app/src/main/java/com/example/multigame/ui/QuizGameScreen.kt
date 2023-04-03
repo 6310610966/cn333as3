@@ -2,6 +2,7 @@ package com.example.multigame.ui
 
 
 import android.app.Activity
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
@@ -22,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.multigame.data.allAnswers
+import com.example.multigame.ui.theme.GrayBackground
 import com.example.multigame.ui.theme.MultiGameTheme
 import com.example.multigame.ui.theme.Purple700
 import com.example.multigame.ui.theme.Teal400
@@ -35,6 +37,8 @@ fun QuizeGameScreen(
     val gameUiState by gameViewModel.uiState.collectAsState()
     Column(
         modifier = modifier
+            .fillMaxSize()
+            .background(GrayBackground)
             .verticalScroll(rememberScrollState())
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
@@ -187,6 +191,9 @@ fun GameLayout(
                         selected = (selectedItem == label),
                         onClick = {
                             gameViewModel.checkUserGuess(label) },
+                        colors = RadioButtonDefaults.colors(
+                            unselectedColor = Purple700
+                        )
                     )
                     Text(
                         text = label,
