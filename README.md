@@ -5,7 +5,7 @@
 * 6310682635 - ณัฐณิชา ฟักสังข์ - 6310682635@student.tu.ac.th
 
 ## About Project
-Multi Game is the 3rd assignment about an Android Application for CN322 Mobile Application Developments.
+Multi Game is the 3rd assignment about an Android Application for CN333 Mobile Application Developments.
 
 ### Requirements
 
